@@ -1,0 +1,9 @@
+{
+  "name": "silent-bell",
+  "description": "Plays a system beep",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kyungho Byoun",
+    "email": "kyungho.byoun@gmail.com"
+  }
+}

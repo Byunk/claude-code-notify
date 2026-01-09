@@ -1,0 +1,16 @@
+{
+  "description": "Plays the Glass sound",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "PermissionRequest|Stop",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Glass.aiff"
+          }
+        ]
+      }
+    ]
+  }
+}

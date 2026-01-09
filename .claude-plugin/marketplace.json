@@ -1,0 +1,20 @@
+{
+  "name": "claude-code-notify",
+  "owner": {
+    "name": "Kyungho Byoun",
+    "email": "kyungho.byoun@gmail.com",
+    "url": "https://github.com/Byunk"
+  },
+  "plugins": [
+    {
+      "name": "glass",
+      "description": "Plays the Glass sound",
+      "source": "./glass"
+    },
+    {
+      "name": "silent-bell",
+      "description": "Plays a system beep",
+      "source": "./silent-bell"
+    }
+  ]
+}
