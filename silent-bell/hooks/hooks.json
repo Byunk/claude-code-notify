@@ -1,9 +1,20 @@
 {
   "description": "Plays a system beep",
   "hooks": {
-    "PostToolUse": [
+    "PermissionRequest": [
       {
-        "matcher": "PermissionRequest|Stop",
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'beep 1'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
         "hooks": [
           {
             "type": "command",
