@@ -1,5 +1,5 @@
 {
-  "description": "Plays a system beep",
+  "description": "Notify with a system beep sound",
   "hooks": {
     "PermissionRequest": [
       {

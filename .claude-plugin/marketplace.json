@@ -1,5 +1,5 @@
 {
-  "name": "claude-code-notify",
+  "name": "minimal-claude-code",
   "owner": {
     "name": "Kyungho Byoun",
     "email": "kyungho.byoun@gmail.com",
@@ -7,14 +7,9 @@
   },
   "plugins": [
     {
-      "name": "glass",
-      "description": "Plays the Glass sound",
-      "source": "./glass"
-    },
-    {
-      "name": "silent-bell",
-      "description": "Plays a system beep",
-      "source": "./silent-bell"
+      "name": "minimal-claude-code",
+      "description": "A minimal Claude Code plugin with just the essentials",
+      "source": "./minimal-claude-code"
     }
   ]
 }

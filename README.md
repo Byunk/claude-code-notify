@@ -1,25 +1,37 @@
-# claude-code-notify
+# minimal-claude-code
 
-Notify when Claude Code done his job.
+A minimal Claude Code plugin with just the essentials.
 
-> Only macOS available.
+**Why "minimal-claude-code"?**
 
-## Plugins
+There are plenty of Claude Code tools out there that look like magic wands. However, I've found most of them to be bloated with unnecessary features and excessive token usage without real productivity gains. I prefer keeping things minimal. Claude Code itself keeps getting better, so plugins should just fill small gaps.
 
-- **silent-bell** - Plays a system beep
-- **glass** - Plays the Glass sound
+So, I created this plugin with two principles in mind:
 
-Triggers on permission requests and task completion.
+1. It should benefit from the evolution of Claude Code itself.
+2. It should provide only essential features that genuinely enhance productivity.
 
 ## Installation
 
 ```sh
-claude plugin marketplace add https://github.com/Byunk/claude-code-notify
-claude plugin install <plugin-name>
+claude plugin marketplace add https://github.com/Byunk/minimal-claude-code
+claude plugin install minimal-claude-code
 ```
 
-For silent-bell:
+## What's Included
 
-```sh
-claude plugin install silent-bell
-```
+### Hooks
+
+- **Notification sounds** - Beeps when Claude Code waits for your input (macOS)
+
+### Commands & Skills
+
+- **`/quick-review`** - Quick code quality check
+
+### Agents
+
+- **operator** - Runs verbose operations (build, testing, debugging) in a subagent to keep output out of your context window
+
+### MCP Servers
+
+- [**context7**](https://context7.com/) - Latest docs for any library

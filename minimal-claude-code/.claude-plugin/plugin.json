@@ -1,0 +1,9 @@
+{
+  "name": "minimal-claude-code",
+  "description": "A minimal Claude Code plugin toolkit with essential hooks, commands, agents, and MCP servers",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kyungho Byoun",
+    "email": "kyungho.byoun@gmail.com"
+  }
+}
