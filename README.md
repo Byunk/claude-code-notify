@@ -41,3 +41,8 @@ For macOS, you need to allow Script Editor to send notifications.
 ### MCP Servers
 
 - [**context7**](https://context7.com/) - Latest docs for any library
+- [**playwright**](https://github.com/microsoft/playwright-mcp) - Browser automation for testing and web interaction
+
+## Contributing
+
+This plugin stays minimal by design. If you've found a hook, skill, agent, or MCP server that genuinely improves productivity without bloat, consider opening a PR.
