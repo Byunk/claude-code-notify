@@ -22,7 +22,13 @@ claude plugin install minimal-claude-code
 
 ### Hooks
 
-- **Notification sounds** - Beeps when Claude Code waits for your input
+- **Notifications** - System notifications when Claude Code needs your attention
+
+For macOS, you need to allow Script Editor to send notifications.
+
+1. Open **System Settings** > **Notifications**
+2. Find **Script Editor** in the app list
+3. Enable **Allow Notifications**
 
 ### Commands & Skills
 

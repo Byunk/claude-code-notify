@@ -1,5 +1,5 @@
 {
-  "description": "Notify with a system beep sound",
+  "description": "Notify when Claude Code needs your attention",
   "hooks": {
     "PermissionRequest": [
       {
