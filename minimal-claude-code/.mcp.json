@@ -4,6 +4,11 @@
       "command": "npx",
       "args": ["-y", "@context7/mcp-server"],
       "description": "Up-to-date Docs for LLMs and AI code editors"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"],
+      "description": "Browser automation for testing and web interaction"
     }
   }
 }
