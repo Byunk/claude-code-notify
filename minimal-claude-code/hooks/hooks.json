@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'beep 1'"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/notify.js"
           }
         ]
       }
@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "osascript -e 'beep 1'"
+            "command": "node ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/notify.js"
           }
         ]
       }

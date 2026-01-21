@@ -22,7 +22,7 @@ claude plugin install minimal-claude-code
 
 ### Hooks
 
-- **Notification sounds** - Beeps when Claude Code waits for your input (macOS)
+- **Notification sounds** - Beeps when Claude Code waits for your input
 
 ### Commands & Skills
 
