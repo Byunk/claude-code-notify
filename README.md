@@ -24,6 +24,8 @@ claude plugin install minimal-claude-code
 
 - **Notifications** - System notifications when Claude Code needs your attention
 
+![Notification Example](assets/notify-hook.png)
+
 For macOS, you need to allow Script Editor to send notifications.
 
 1. Open **System Settings** > **Notifications**
