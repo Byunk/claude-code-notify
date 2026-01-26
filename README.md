@@ -40,6 +40,25 @@ For macOS, you need to allow Script Editor to send notifications.
 
 - **operator** - Runs verbose operations (build, testing, debugging) in a subagent to keep output out of your context window
 
+**Example: Testing UI with Playwright**
+
+When building a new feature, you need to test UI interactions. Running Playwright directly pollutes your context window with verbose output. Instead:
+
+1. Prompt Claude Code:
+
+```
+Test the login form with playwright mcp. Use operator agent.
+```
+
+2. The operator agent will:
+
+- Launch the browser and navigate to your page
+- Execute the test steps
+- Handle any failures and retry if needed
+- Return a concise summary of results
+
+3. Your main context stays clean, so you can continue development after testing.
+
 ### MCP Servers
 
 - [**context7**](https://context7.com/) - Latest docs for any library
