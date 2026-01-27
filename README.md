@@ -22,7 +22,7 @@ claude plugin install minimal-claude-code
 
 ### Hooks
 
-- **Notifications** - System notifications when Claude Code needs your attention
+- [**Notifications**](minimal-claude-code/hooks/) - System notifications when Claude Code needs your attention
 
 ![Notification Example](assets/notify-hook.png)
 
@@ -32,13 +32,17 @@ For macOS, you need to allow Script Editor to send notifications.
 2. Find **Script Editor** in the app list
 3. Enable **Allow Notifications**
 
-### Commands & Skills
+### Commands
 
-- **`/quick-review`** - Quick code quality check
+- [**`/quick-review`**](minimal-claude-code/commands/quick-review.md) - Quick code quality check
+
+### Skills
+
+- [**context-engineering**](minimal-claude-code/skills/context-engineering/) - Principles for designing context-efficient AI agents and tools (based on [Anthropic's engineering blog](https://www.anthropic.com/engineering) and [Claude Code system prompts](https://github.com/Piebald-AI/claude-code-system-prompts))
 
 ### Agents
 
-- **operator** - Runs verbose operations (build, testing, debugging) in a subagent to keep output out of your context window
+- [**operator**](minimal-claude-code/agents/operator.md) - Runs verbose operations (build, testing, debugging) in a subagent to keep output out of your context window
 
 **Example: Testing UI with Playwright**
 
