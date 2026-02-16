@@ -63,9 +63,11 @@ Test the login form with playwright mcp. Use operator agent.
 
 3. Your main context stays clean, so you can continue development after testing.
 
-### MCP Servers
+### Recommended MCP Servers
 
-- [**context7**](https://context7.com/) - Latest docs for any library
+These MCP servers are recommended for use with this plugin:
+
+- [**context7**](https://context7.com/) - Up-to-date docs for LLMs and AI code editors
 - [**playwright**](https://github.com/microsoft/playwright-mcp) - Browser automation for testing and web interaction
 
 ## Recommended Plugins
