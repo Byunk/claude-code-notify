@@ -10,6 +10,11 @@
       "name": "minimal-claude-code",
       "description": "A minimal Claude Code plugin with just the essentials",
       "source": "./minimal-claude-code"
+    },
+    {
+      "name": "context-engineering",
+      "description": "Design better LLM context for agents, prompts, tools, RAG/MCP servers, and multi-agent systems.",
+      "source": "./context-engineering"
     }
   ]
 }

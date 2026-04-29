@@ -37,14 +37,22 @@ For macOS, you need to allow Script Editor to send notifications.
 - [**`/code-review`**](minimal-claude-code/commands/code-review.md) - Context-aware code review with selectable review target (`--base`, `--uncommitted`, `--commit`, or `--custom`)
 - [**`/create-pr`**](minimal-claude-code/commands/create-pr.md) - Convention-aware GitHub PR creation from the current feature branch
 
-### Skills
-
-- [**context-engineering**](minimal-claude-code/skills/context-engineering/) - Principles for designing context-efficient AI agents and tools (based on [Anthropic's engineering blog](https://www.anthropic.com/engineering) and [Claude Code system prompts](https://github.com/Piebald-AI/claude-code-system-prompts))
-
 ### Agents
 
 - [**code-reviewer**](minimal-claude-code/agents/code-reviewer.md) - Runs `/code-review` analysis in a dedicated read-only subagent context
 
+## Additional Plugins
+
+This marketplace also includes optional plugins that are separate from `minimal-claude-code`.
+
+- [**context-engineering**](context-engineering/skills/context-engineering/) - Design better LLM context for agents, prompts, tools, RAG/MCP servers, and multi-agent systems.
+
+Install it separately:
+
+```sh
+claude plugin install context-engineering
+```
+
 ## Contributing
 
-This plugin stays minimal by design. If you've found a hook, skill, agent, or MCP server that genuinely improves productivity without bloat, consider opening a PR.
+The minimal plugin stays minimal by design. If you've found a hook, skill, or agent that genuinely improves productivity without bloat, consider opening a PR.

@@ -1,0 +1,9 @@
+{
+  "name": "context-engineering",
+  "description": "Design better LLM context for agents, prompts, tools, RAG/MCP servers, and multi-agent systems.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kyungho Byoun",
+    "email": "kyungho.byoun@gmail.com"
+  }
+}
