@@ -34,7 +34,7 @@ For macOS, you need to allow Script Editor to send notifications.
 
 ### Commands
 
-- [**`/quick-review`**](minimal-claude-code/commands/quick-review.md) - Quick code quality check
+- [**`/code-review`**](minimal-claude-code/commands/code-review.md) - Context-aware code review with selectable review target (`--base`, `--uncommitted`, `--commit`, or `--custom`)
 
 ### Skills
 
@@ -42,6 +42,7 @@ For macOS, you need to allow Script Editor to send notifications.
 
 ### Agents
 
+- [**code-reviewer**](minimal-claude-code/agents/code-reviewer.md) - Runs `/code-review` analysis in a dedicated read-only subagent context
 - [**operator**](minimal-claude-code/agents/operator.md) - Runs verbose operations (build, testing, debugging) in a subagent to keep output out of your context window
 
 **Example: Testing UI with Playwright**
