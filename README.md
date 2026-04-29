@@ -35,6 +35,7 @@ For macOS, you need to allow Script Editor to send notifications.
 ### Commands
 
 - [**`/code-review`**](minimal-claude-code/commands/code-review.md) - Context-aware code review with selectable review target (`--base`, `--uncommitted`, `--commit`, or `--custom`)
+- [**`/create-pr`**](minimal-claude-code/commands/create-pr.md) - Convention-aware GitHub PR creation from the current feature branch
 
 ### Skills
 
