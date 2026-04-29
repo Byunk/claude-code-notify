@@ -44,39 +44,6 @@ For macOS, you need to allow Script Editor to send notifications.
 ### Agents
 
 - [**code-reviewer**](minimal-claude-code/agents/code-reviewer.md) - Runs `/code-review` analysis in a dedicated read-only subagent context
-- [**operator**](minimal-claude-code/agents/operator.md) - Runs verbose operations (build, testing, debugging) in a subagent to keep output out of your context window
-
-**Example: Testing UI with Playwright**
-
-When building a new feature, you need to test UI interactions. Running Playwright directly pollutes your context window with verbose output. Instead:
-
-1. Prompt Claude Code:
-
-```
-Test the login form with playwright mcp. Use operator agent.
-```
-
-2. The operator agent will:
-
-- Launch the browser and navigate to your page
-- Execute the test steps
-- Handle any failures and retry if needed
-- Return a concise summary of results
-
-3. Your main context stays clean, so you can continue development after testing.
-
-### Recommended MCP Servers
-
-These MCP servers are recommended for use with this plugin:
-
-- [**context7**](https://context7.com/) - Up-to-date docs for LLMs and AI code editors
-- [**playwright**](https://github.com/microsoft/playwright-mcp) - Browser automation for testing and web interaction
-
-## Recommended Plugins
-
-A curated list of other plugins worth checking out:
-
-- [**frontend-design**](https://github.com/anthropics/claude-plugins-official/tree/main/plugins/frontend-design) - Create distinctive, production-grade frontend interfaces with high design quality
 
 ## Contributing
 
