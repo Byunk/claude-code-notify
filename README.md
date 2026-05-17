@@ -34,6 +34,8 @@ Note that you need to enable `plugin_hooks` in your Codex CLI config to use noti
 codex features enable plugin_hooks
 ```
 
+Then run `/hooks` in Codex and trust the plugin hooks.
+
 The Codex marketplace currently exposes:
 
 - `minimal-claude-code`
