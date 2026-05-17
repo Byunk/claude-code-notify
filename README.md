@@ -28,6 +28,12 @@ codex --enable plugins plugin marketplace add Byunk/minimal-claude-code
 
 You can install the desired plugin by running `/plugins` command in the Codex CLI.
 
+Note that you need to enable `plugin_hooks` in your Codex CLI config to use notify hooks.
+
+```sh
+codex features enable plugin_hooks
+```
+
 The Codex marketplace currently exposes:
 
 - `minimal-claude-code`

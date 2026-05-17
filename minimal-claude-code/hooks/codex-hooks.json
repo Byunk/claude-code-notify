@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node ./hooks/scripts/notify.js"
+            "command": "sh -c 'script=$(ls -dt \"${CODEX_HOME:-$HOME/.codex}/plugins/cache/minimal-claude-code/minimal-claude-code\"/*/hooks/scripts/notify.js 2>/dev/null | head -n 1); [ -n \"$script\" ] && exec node \"$script\"'"
           }
         ]
       }
@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node ./hooks/scripts/notify.js"
+            "command": "sh -c 'script=$(ls -dt \"${CODEX_HOME:-$HOME/.codex}/plugins/cache/minimal-claude-code/minimal-claude-code\"/*/hooks/scripts/notify.js 2>/dev/null | head -n 1); [ -n \"$script\" ] && exec node \"$script\"'"
           }
         ]
       }
