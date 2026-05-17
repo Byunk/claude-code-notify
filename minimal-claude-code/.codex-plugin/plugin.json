@@ -14,7 +14,7 @@
     "hooks",
     "notifications"
   ],
-  "hooks": "./hooks/hooks.json",
+  "hooks": "./hooks/codex-hooks.json",
   "interface": {
     "displayName": "Minimal Claude Code",
     "shortDescription": "Minimal productivity helpers for agent workflows.",

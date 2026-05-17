@@ -23,7 +23,7 @@ claude plugin install minimal-claude-code
 ### Codex
 
 ```sh
-codex plugin marketplace add Byunk/minimal-claude-code
+codex --enable plugins plugin marketplace add Byunk/minimal-claude-code
 ```
 
 You can install the desired plugin by running `/plugins` command in the Codex CLI.

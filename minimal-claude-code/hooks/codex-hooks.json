@@ -1,0 +1,27 @@
+{
+  "description": "Notify when Codex needs your attention",
+  "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./hooks/scripts/notify.js"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node ./hooks/scripts/notify.js"
+          }
+        ]
+      }
+    ]
+  }
+}
