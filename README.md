@@ -13,10 +13,25 @@ So, I created this plugin with two principles in mind:
 
 ## Installation
 
+### Claude Code
+
 ```sh
 claude plugin marketplace add https://github.com/Byunk/minimal-claude-code
 claude plugin install minimal-claude-code
 ```
+
+### Codex
+
+```sh
+codex plugin marketplace add Byunk/minimal-claude-code
+```
+
+You can install the desired plugin by running `/plugins` command in the Codex CLI.
+
+The Codex marketplace currently exposes:
+
+- `minimal-claude-code`
+- `context-engineering`
 
 ## What's Included
 

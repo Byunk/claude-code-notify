@@ -1,0 +1,32 @@
+{
+  "name": "minimal-claude-code",
+  "interface": {
+    "displayName": "Minimal Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "minimal-claude-code",
+      "source": {
+        "source": "local",
+        "path": "./minimal-claude-code"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "context-engineering",
+      "source": {
+        "source": "local",
+        "path": "./context-engineering"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

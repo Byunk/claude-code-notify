@@ -1,0 +1,33 @@
+{
+  "name": "context-engineering",
+  "description": "Design better LLM context for agents, prompts, tools, RAG/MCP servers, and multi-agent systems.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Kyungho Byoun",
+    "email": "kyungho.byoun@gmail.com",
+    "url": "https://github.com/Byunk"
+  },
+  "homepage": "https://github.com/Byunk/minimal-claude-code",
+  "repository": "https://github.com/Byunk/minimal-claude-code",
+  "keywords": [
+    "codex",
+    "context-engineering",
+    "skills"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Context Engineering",
+    "shortDescription": "Design better context for LLM systems.",
+    "longDescription": "Guidance for designing effective LLM context across agents, prompts, tools, RAG/MCP servers, and multi-agent systems.",
+    "developerName": "Kyungho Byoun",
+    "category": "Productivity",
+    "capabilities": [
+      "Skills"
+    ],
+    "websiteURL": "https://github.com/Byunk/minimal-claude-code",
+    "defaultPrompt": [
+      "Help me design better agent context."
+    ],
+    "brandColor": "#0F766E"
+  }
+}
