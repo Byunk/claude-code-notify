@@ -1,14 +1,14 @@
 ---
 name: create-pr
-description: Create a GitHub PR from the current feature branch
-argument-hint: "[--base <branch> | --draft | --title <title>]"
+description: Create a draft GitHub PR from the current feature branch
+argument-hint: "[--base <branch> | --title <title>]"
 disable-model-invocation: true
-allowed-tools: Bash(git:*), Bash(gh:*), Read, Grep, Glob, AskUserQuestion
+allowed-tools: Bash(git:*), Bash(gh:*), Read, Grep, Glob
 ---
 
 # Create PR
 
-Create a GitHub PR from the current branch with a convention-aware title and body.
+Create a draft GitHub PR from the current branch with a convention-aware title and body.
 
 This command has remote side effects: it may push the current branch and create a PR on GitHub. Do not push or create the PR until the user explicitly approves the PR description and confirms creation.
 
@@ -18,22 +18,28 @@ Parse `$ARGUMENTS` before gathering context:
 
 - `--base <branch>`: use this branch as the PR base.
 - `--branch <branch>`: alias for `--base <branch>`.
-- `--draft`: create the PR as a draft.
 - `--title <title>`: include this title as the first title suggestion.
 
 If `$ARGUMENTS` contains an unknown flag or a flag missing a required value, report valid usage and stop.
 
-## Interactive Questions
+## User Questions
 
-Use the built-in `AskUserQuestion` tool for every question that needs user input. It is a tool, not a skill. Do not ask selection or follow-up questions as plain chat text, and do not say that the `AskUserQuestion` skill is unavailable.
+When user input is needed, ask in plain chat text with concise numbered options. This keeps the command compatible with Codex and other chat-only runners.
 
-Use `AskUserQuestion` when:
+Ask the user when:
 
 - Selecting or confirming the base branch.
 - Uncommitted changes exist and the user must decide whether to continue.
 - The generated PR title needs user selection or editing.
 - The generated PR description needs explicit approval.
 - The final push and PR creation needs confirmation.
+
+Question rules:
+
+- Do not depend on an interactive selector UI.
+- Do not say that an interactive selector cannot be rendered.
+- Put the recommended option first when there is one.
+- Let the user answer with a number, exact option text, or free-form replacement.
 
 ## Step 1: Select and Validate Base Branch
 
@@ -50,8 +56,8 @@ Confirm the working tree is on a feature branch and has commits to submit.
      ```
    - If `--base` or `--branch` was provided, include that value as the first option.
    - Otherwise, if a likely default branch is known from `gh repo view --json defaultBranchRef -q .defaultBranchRef.name`, put it first.
-   - Ask the user `Which base branch should I create the PR against?` using `AskUserQuestion`.
-   - Show branch choices as single-select options.
+   - Ask the user `Which base branch should I create the PR against?` in plain chat text.
+   - Show branch choices as a numbered list, with the recommended branch first.
    - If the user provides free-form input, treat it as the base branch.
 3. If the current branch is the base branch, output `Nothing to submit -- current branch is the base branch.` and stop.
 4. Fetch the base branch:
@@ -69,7 +75,7 @@ Confirm the working tree is on a feature branch and has commits to submit.
 
 If there are zero commits ahead and no uncommitted changes, output `Nothing to submit -- no commits ahead of base branch.` and stop.
 
-If there are uncommitted changes, tell the user that uncommitted changes will not be included in the PR. Ask whether to continue using the built-in `AskUserQuestion` tool. If the user declines, stop.
+If there are uncommitted changes, tell the user that uncommitted changes will not be included in the PR. Ask whether to continue using a plain-text yes/no question. If the user declines, stop.
 
 ## Step 2: Learn PR Conventions
 
@@ -82,9 +88,10 @@ gh pr list --state merged --limit 5 --json title,body,number
 Analyze the returned PRs for:
 
 - Title format: prefixes such as `feat:`, `fix:`, ticket IDs, capitalization, and length.
-- Body structure: section headings, checklist patterns, issue links, and test-plan conventions.
+- Body style: how much context they include, when they use headings, how they link issues, and how casual or formal the writing is.
+- Code links: prefer full GitHub `blob/<sha>/path#Lx-Ly` links for important ranges. GitHub renders linked code snippets in the PR, which makes reviews easier. Example: `https://github.com/a4s-lab/spreadsheet/blob/44aa272358fa048cfe2c52b0c6dccdb182513bc2/crates/workbook/src/operation.rs#L357-L370`.
 
-If no merged PRs exist or `gh pr list` fails, use a concise default body with `Summary` and `Review guide`.
+If no merged PRs exist or `gh pr list` fails, use a concise body with only the sections that help this PR.
 
 ## Step 3: Gather Diff and Commit History
 
@@ -110,62 +117,58 @@ Title rules:
 - If no convention is detected, use a concise imperative title.
 - Keep the title under 72 characters.
 
-Use one `AskUserQuestion` single-select question:
+Ask in plain chat text:
 
-- `header`: `Title`
-- `question`: `Which PR title should I use? Select one below, or type an edited title.`
-- `options`: one option per suggested title
-- `multiSelect`: `false`
+```text
+Which PR title should I use? Reply with a number, or type an edited title.
 
-If the user types free-form input, use that as the final title.
+1. <suggested title>
+2. <suggested title>
+3. <suggested title>
+```
+
+If the user replies with a number, use that suggestion. If the user types free-form input, use that as the final title.
 
 ## Step 5: Generate and Approve PR Description
 
-Generate a PR description that fits this repository and this change. No single PR body format is appropriate for every repository or every change, so choose the smallest useful structure based on recent merged PRs, the commit history, and the diff.
+Generate a PR description that fits this repository and this change. Choose the smallest useful structure based on recent merged PRs, the commit history, and the diff.
 
-Prefer repository convention when it is clear. Otherwise follow these conventional PR best practices:
+Recent `a4s-lab/spreadsheet` PRs are good examples: short opening context, a few targeted links, and extra explanation only when the implementation is non-obvious.
 
-- Make the first section explain why the change exists and what changed.
-- Include review guidance when it materially helps the reviewer know where to start.
-- Include validation or test notes when tests, manual verification, migrations, generated files, or release risk matter.
-- Include screenshots, rollout notes, breaking changes, linked issues, or follow-up notes only when the diff or repository convention calls for them.
-- Avoid a rigid template when a short description is clearer.
+Writing rules:
+
+- Start high level: what this PR enables or fixes, not how every file changed.
+- Keep it concise. Reviewers dislike text-heavy descriptions.
+- Use markdown for scanability: short paragraphs, bullets, and headings only when they help.
+- No strict template. Decide section breaks per PR. A forced `Summary / Changes / Tests` shape can look generated.
 - Do not list every changed file.
-- Keep the description concise enough for a reviewer to scan quickly.
+- Link important code ranges with full GitHub URLs so GitHub shows code snippets inline.
+- Explain complex or surprising implementation choices, but stay out of low-level narration.
+- Casual fragments are fine in bullets. They do not all need to be complete sentences.
+- Mention issue links, validation, screenshots, rollout notes, breaking changes, or follow-ups only when useful.
 
-Useful fallback shapes:
-
-```markdown
-## Summary
-
-<1-2 concise paragraphs describing the reason and change.>
-
-## Review guide
-
-- **Start here**: `path/to/key-file.ext` -- <why this is the core change>
-- <Optional additional review pointer>
-```
-
-or:
+A good description may be as small as:
 
 ```markdown
-## Summary
+This PR implements `Operation::SetCellFormats` and `Operation::ClearCellFormats`.
 
-<1-2 concise paragraphs describing the reason and change.>
+https://github.com/a4s-lab/spreadsheet/blob/44aa272358fa048cfe2c52b0c6dccdb182513bc2/crates/workbook/src/operation.rs#L357-L370
 
-## Validation
+The old `FormatStore` had behavior that did not match the spreadsheet model, so this redesign moves the store under `sheet/stores` and keeps changed ranges sparse for reviewers to inspect.
 
-- <Test, build, or manual validation performed or expected.>
+Please refer to #143 for the background.
 ```
 
-After generating the description, show the full proposed description and ask for explicit approval with `AskUserQuestion`:
+After generating the description, show the full proposed description and ask for explicit approval in plain chat text:
 
-- `header`: `Description`
-- `question`: `Use this PR description? Select approve, or type requested edits.`
-- Options:
-  - `Approve description`
-  - `Regenerate description`
-- `multiSelect`: `false`
+```text
+Use this PR description?
+
+1. Approve description
+2. Regenerate description
+
+Or type requested edits.
+```
 
 If the user types requested edits, revise the description once using those edits and ask for approval again. Do not create the PR until the user approves the final description.
 
@@ -175,11 +178,11 @@ Before any remote side effect, show:
 
 - Base branch
 - Current branch
-- Draft mode status
+- Draft mode: always enabled
 - Final title
 - Approved description
 
-Ask for confirmation with the built-in `AskUserQuestion` tool. If the user does not confirm, stop without pushing or creating a PR.
+Ask for confirmation in plain chat text. If the user does not confirm, stop without pushing or creating a PR.
 
 After confirmation:
 
@@ -187,14 +190,13 @@ After confirmation:
    ```bash
    git push -u origin <current-branch>
    ```
-2. Create the PR:
+2. Create the draft PR:
    ```bash
-   gh pr create --base <base-branch> --title "<title>" --body "$(cat <<'EOF'
+   gh pr create --draft --base <base-branch> --title "<title>" --body "$(cat <<'EOF'
    <body>
    EOF
    )"
    ```
-   Add `--draft` when requested.
 3. Output the PR URL returned by `gh pr create`.
 
 If `git push` or `gh pr create` fails, report the exact failure and stop.
